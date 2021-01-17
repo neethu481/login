@@ -1,0 +1,16 @@
+{% extends "./layout/base1.html" %}
+{% load static %}
+
+{% block content %}
+    <h1>Dashboard</h1>
+    <b>Select a user to delete : </b>
+    <form action="{% url 'authen:dropdown' %}" method="post">
+        {% csrf_token %}
+        <select name="item_id">
+        {% for entry in all_users %}
+            <option value="{{ entry }}">{{ entry }}</option>
+        {% endfor %}
+        </select>
+        <input type="submit" value="Delete User">
+    </form>
+{% endblock content %}
